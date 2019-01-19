@@ -22,17 +22,17 @@ def SortImgDataByTime(dictData, infoHeader = ["name", "hour", "minute"]):
         else:
             arrTime = np.concatenate((arrTime, tmp), axis = 0)
     # 排序 早0-
-    # SORT - MAIN
+    ## SORT - MAIN
     argIdx = arrTime.argsort(axis = 0)[:, 0]
 #    print(arrTime[argIdx])
     
     if infoHeader[1] == "hour":
         # 排序 早6-
-        # 挑時間
+        ## 挑時間
         for i, liTime in enumerate(arrTime[argIdx]):
             if liTime[0] > 6:
                 break
-        # 改變順序
+        ## 改變順序
         argIdx = np.concatenate((argIdx[i:], argIdx[:i]), axis = 0)
     #    print("=>", arrTime[argIdx])
     return arrImgName, argIdx

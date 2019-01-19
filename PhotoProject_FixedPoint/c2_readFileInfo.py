@@ -68,6 +68,7 @@ def MakeInfoTable_time(strFolderPath):
 #
 #print(ReadImgTime(imgFolder + imgNameList[0]))
 
+# 這不夠算
 def CalImgLight(imgPath):
     img = cv2.imread(imgPath)
     img = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)

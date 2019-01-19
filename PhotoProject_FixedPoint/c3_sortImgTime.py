@@ -11,6 +11,7 @@ import numpy as np
 from c2_readFileInfo import *
 
 def SortImgDataByTime(dictData, infoHeader = ["name", "hour", "minute"]):
+    """ main: ByTime"""
     # 檔名
     arrImgName = np.array(list(dictData.keys()))
     # TO ARRAY

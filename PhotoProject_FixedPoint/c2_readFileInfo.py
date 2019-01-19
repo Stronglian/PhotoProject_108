@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Sat Jan 19 20:54:33 2019
-
 @author: Strong
 """
 """
@@ -36,6 +35,7 @@ def ReadImgTime(imgPath):
     for tag, value in info.items():
         if tag == 36867: #DateTimeOriginal
             timeDict = TimeStringToDict(value)
+            break
     return timeDict
 
 from tkinter import Tk, filedialog
@@ -70,11 +70,9 @@ def MakeInfoTable_time(strFolderPath):
 
 def CalImgLight(imgPath):
     img = cv2.imread(imgPath)
-    info = img._getexif()
-    for tag, value in info.items():
-        if tag == 36867: #DateTimeOriginal
-            timeDict = TimeStringToDict(value)
-    return timeDict
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+    
+    return np.average(img[:, :, 2]) #V
 
 def MakeInfoTable_light(strFolderPath):
     dictOutput = {}
@@ -85,5 +83,12 @@ def MakeInfoTable_light(strFolderPath):
     return dictOutput
     
 if __name__ == "__main__":
+    import time
+    _start_time = time.time()
+    
     strDataFolder = SelectDirectory()
-    dictData = MakeInfoTable_time(strDataFolder)
+    dictData = MakeInfoTable_light(strDataFolder)
+    
+    
+    _end_time = time.time()
+    print("It cost %.4f sec."%( _end_time - _start_time))

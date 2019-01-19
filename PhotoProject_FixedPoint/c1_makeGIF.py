@@ -6,8 +6,8 @@ Created on Sat Jan 19 20:20:54 2019
 """
 1. [Programmatically generate video or animated GIF in Python?](https://stackoverflow.com/questions/753190/programmatically-generate-video-or-animated-gif-in-python)
 2. CV2 影片
-- [](https://stackoverflow.com/questions/9795601/python-jpeg-to-movie)
-- [Python Code：图片和视频互相转换](https://blog.csdn.net/Errors_In_Life/article/details/72809580)
+ - [](https://stackoverflow.com/questions/9795601/python-jpeg-to-movie)
+ - [Python Code：图片和视频互相转换](https://blog.csdn.net/Errors_In_Life/article/details/72809580)
 """
 
 import numpy as np

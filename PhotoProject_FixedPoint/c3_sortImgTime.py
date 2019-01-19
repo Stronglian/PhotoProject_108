@@ -21,9 +21,20 @@ def SortImgDataByTime(dictData, infoHeader = ["name", "hour", "minute"]):
             arrTime = tmp.copy()
         else:
             arrTime = np.concatenate((arrTime, tmp), axis = 0)
-    # SORT
-    argIdx = arrTime.argsort(axis = 0)
-    return arrImgName, argIdx[:, 0]
+    # 排序 早0-
+    # SORT - MAIN
+    argIdx = arrTime.argsort(axis = 0)[:, 0]
+#    print(arrTime[argIdx])
+    
+    # 排序 早6-
+    # 挑時間
+    for i, liTime in enumerate(arrTime[argIdx]):
+        if liTime[0] > 6:
+            break
+    # 改變順序
+    argIdx = np.concatenate((argIdx[i:], argIdx[:i]), axis = 0)
+#    print("=>", arrTime[argIdx])
+    return arrImgName, argIdx
 
 #    # 轉製作成 LIST - 檔名、時、分
 #    infoHeader = ["name", "hour", "minute"]
@@ -39,7 +50,6 @@ def SortImgDataByTime(dictData, infoHeader = ["name", "hour", "minute"]):
 #        else:
 #            arrTime = np.concatenate((arrTime, tmp), axis = 0)
 ##    arrTime1 = np.array(arrTime, dtype=[('hour', '<i4'), ('minute', '<i4')])
-#    # 排序 早0-
 #    tmp = arrTime.argsort(axis = 0)
 #    print(arrTime[tmp[:, 0]])
     
@@ -57,12 +67,11 @@ if __name__ == "__main__":
     # 讀取設置
 #    strDataFolder = SelectDirectory()
     strDataFolder = "E:/_Pictures/PHOTO_TMP/"
-    dictData = MakeInfoTable_light(strDataFolder)
+    dictData = MakeInfoTable_time(strDataFolder)
     
-    arrImgName, argIdx = SortImgDataByLight(dictData)
-    print(arrImgName[argIdx])    
+    arrImgName, argIdx = SortImgDataByTime(dictData)
+#    print(arrImgName[argIdx])    
     
     
-    # 排序 早6-
     
     

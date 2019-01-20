@@ -26,11 +26,11 @@ if __name__ == "__main__":
 #    strDataFolder = SelectDirectory() #要避開中文、特殊符號
     strDataFolder = "E:/_Pictures/PHOTO_TMP/" 
     ## 讀取圖片資料 - 名稱、時間
-    dictData = MakeInfoTable_light(strDataFolder)
+    dictData = MakeInfoTable_time(strDataFolder)
     
     # 處理資料
     ## 依照時間排序照片
-    arrImgName, argIdx = SortImgDataByLight(dictData, infoHeader = ["name", "hour", "minute", "light"])
+    arrImgName, argIdx = SortImgDataByTime(dictData, infoHeader = ["name", "hour", "minute", "light"])
 #    print(arrImgName[argIdx])    
     ## 顯示
     for na in arrImgName[argIdx]:
@@ -41,8 +41,10 @@ if __name__ == "__main__":
     cv2.destroyAllWindows()
     
     # 輸出資料
-    ## 製作GIF、MP4
-    
+    ## 製作GIF # 檔案好大
+    MakeForderImgToGif(arrImgName[argIdx], imgFolder = strDataFolder, boolResize = True)
+    ## 製作MP4
+    MakeForderImgToMP4(arrImgName[argIdx], imgFolder = strDataFolder, boolResize = True)
     
     _end_time = time.time()
-    print("/n/nIt cost %.4f sec."%( _end_time - _start_time))
+    print("\n\nIt cost %.4f sec."%( _end_time - _start_time))

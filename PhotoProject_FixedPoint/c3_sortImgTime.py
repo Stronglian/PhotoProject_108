@@ -28,11 +28,15 @@ def SortImgDataByTime(dictData, infoHeader = ["name", "hour", "minute"]):
     argIdx = arrTime.argsort(axis = 0)[:, 0]
 #    print(arrTime[argIdx])
     
-    if infoHeader[1] == "hour":
+    if "hour" in infoHeader:
+        for idx_hour, label in enumerate(infoHeader):
+            if label == "hour":
+                break
+        idx_hour -=  1
         # 排序 早6-
         ## 挑時間
         for i, liTime in enumerate(arrTime[argIdx]):
-            if liTime[0] > 6:
+            if liTime[idx_hour] > 6:
                 break
         ## 改變順序
         argIdx = np.concatenate((argIdx[i:], argIdx[:i]), axis = 0)

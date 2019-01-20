@@ -30,7 +30,7 @@ if __name__ == "__main__":
     
     # 處理資料
     ## 依照時間排序照片
-    arrImgName, argIdx = SortImgDataByTime(dictData, infoHeader = ["name", "hour", "minute", "light"])
+    arrImgName, argIdx = SortImgDataByTime(dictData, infoHeader = ["name", "hour", "minute"]) #, "light"])
 #    print(arrImgName[argIdx])    
     ## 顯示
     for na in arrImgName[argIdx]:

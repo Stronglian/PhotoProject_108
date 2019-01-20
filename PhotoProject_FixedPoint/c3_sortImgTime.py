@@ -13,6 +13,7 @@ from c2_readFileInfo import *
 def SortImgDataByTime(dictData, infoHeader = ["name", "hour", "minute"]):
     """ main: ByTime"""
     # 檔名
+    assert infoHeader[0] == "name"
     arrImgName = np.array(list(dictData.keys()))
     # TO ARRAY
     for i, na in enumerate(arrImgName):
